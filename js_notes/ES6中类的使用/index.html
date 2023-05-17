@@ -1,12 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ES6</title>
+  <title>Document</title>
+
+  <style>
+    canvas {
+      border: dashed 1px red;
+      border-bottom-color: transparent;
+      border-right-color: transparent;
+    }
+  </style>
+
 </head>
+
 <body>
-  <script src="./07_ES6补充.js"></script>
+  <canvas id="circle_progress" width="100" height="100"> </canvas>
+  <script>
+    const PI = Math.PI
+    var canvas = document.getElementById('circle_progress'),
+      ctx = canvas.getContext('2d'),
+      startRadain = PI * 3 / 4,
+      endRadian = PI / 4
+
+    // var finalRadian = sR + ((PI + (PI - sR) * 2) * percent / 100); // 红圈的终点弧度
+    // var step = (PI + (PI - sR) * 2) / 100; // 一个1%对应的弧度大小
+
+    const step = ((PI * 2) - PI * 0.5) / 100
+
+    drawCanvas(50, 50, 40, startRadain, endRadian, '#d8f5e4', 8)
+    drawCanvas(50, 50, 40, startRadain, 60 * step + startRadain, '#0abf55', 8)
+
+
+    function drawCanvas(x, y, r, sRadian, eRadian, color, lineWidth) {
+      ctx.beginPath();
+      ctx.lineCap = "round";
+      ctx.strokeStyle = color;
+      ctx.lineWidth = lineWidth;
+      ctx.arc(x, y, r, sRadian, eRadian, false);
+      ctx.stroke();
+    }
+
+  </script>
 </body>
+
 </html>
