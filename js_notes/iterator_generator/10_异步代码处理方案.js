@@ -46,15 +46,13 @@ const generator = getData()
 
 
 // 三 async await
-
-
 async function getData3() {
   const res1 = await requestData('abu')
+  console.log('res1', res1)
   const res2 = await requestData(res1 + '002')
   const res3 = await requestData(res2 + '003')
   return res3
 }
-
 
 console.log('getdata3', getData3().then(res => {
   console.log('res', res)

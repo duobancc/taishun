@@ -6,6 +6,8 @@ async function foo() {
   console.log('003')
   console.log('004')
 
+  throw '-0001'
+
   // 返回一个值
   // return '110'
 
@@ -25,8 +27,5 @@ async function foo() {
 
 }
 
-console.log('006')
 // .then 放入微任务中执行
-const res = foo().then(res => console.log('res', res))
-console.log('res---', res)
-console.log('005')
+const res = foo().then(res => console.log('res', res)).catch( err => console.log('err', err))
